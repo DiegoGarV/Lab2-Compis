@@ -5,5 +5,4 @@
 "hello" ** 2
 5 == "5"
 false < 2
-"hello" + "world"
 'h' + 2
