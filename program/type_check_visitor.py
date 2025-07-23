@@ -1,6 +1,6 @@
 from SimpleLangParser import SimpleLangParser
 from SimpleLangVisitor import SimpleLangVisitor
-from custom_types import IntType, FloatType, StringType, BoolType
+from custom_types import IntType, FloatType, StringType, BoolType, CharType
 
 class TypeCheckVisitor(SimpleLangVisitor):
 
@@ -19,6 +19,10 @@ class TypeCheckVisitor(SimpleLangVisitor):
     
     if isinstance(left_type, (IntType, FloatType)) and isinstance(right_type, (IntType, FloatType)):
         return FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
+    
+    elif isinstance(left_type, (StringType, CharType)) and isinstance(right_type, (StringType, CharType)):
+        return StringType()
+    
     else:
         raise TypeError("Unsupported operand types for + or -: {} and {}".format(left_type, right_type))
   
@@ -57,3 +61,6 @@ class TypeCheckVisitor(SimpleLangVisitor):
         return BoolType()
     else:
         raise TypeError(f"Unsupported operand types for comparison: {left_type} and {right_type}")
+    
+  def visitChar(self, ctx: SimpleLangParser.CharContext):
+    return CharType()

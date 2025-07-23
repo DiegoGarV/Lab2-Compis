@@ -71,6 +71,15 @@ class SimpleLangListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimpleLangParser#Char.
+    def enterChar(self, ctx:SimpleLangParser.CharContext):
+        pass
+
+    # Exit a parse tree produced by SimpleLangParser#Char.
+    def exitChar(self, ctx:SimpleLangParser.CharContext):
+        pass
+
+
     # Enter a parse tree produced by SimpleLangParser#Parens.
     def enterParens(self, ctx:SimpleLangParser.ParensContext):
         pass

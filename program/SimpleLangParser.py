@@ -10,21 +10,21 @@ else:
 
 def serializedATN():
     return [
-        4,1,19,43,2,0,7,0,2,1,7,1,2,2,7,2,1,0,4,0,8,8,0,11,0,12,0,9,1,1,
-        1,1,1,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,24,8,2,1,2,1,2,1,
-        2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,5,2,38,8,2,10,2,12,2,41,9,
-        2,1,2,0,1,4,3,0,2,4,0,3,1,0,2,3,1,0,4,5,1,0,6,11,48,0,7,1,0,0,0,
-        2,11,1,0,0,0,4,23,1,0,0,0,6,8,3,2,1,0,7,6,1,0,0,0,8,9,1,0,0,0,9,
-        7,1,0,0,0,9,10,1,0,0,0,10,1,1,0,0,0,11,12,3,4,2,0,12,13,5,18,0,0,
-        13,3,1,0,0,0,14,15,6,2,-1,0,15,24,5,14,0,0,16,24,5,15,0,0,17,24,
-        5,16,0,0,18,24,5,17,0,0,19,20,5,12,0,0,20,21,3,4,2,0,21,22,5,13,
-        0,0,22,24,1,0,0,0,23,14,1,0,0,0,23,16,1,0,0,0,23,17,1,0,0,0,23,18,
-        1,0,0,0,23,19,1,0,0,0,24,39,1,0,0,0,25,26,10,9,0,0,26,27,5,1,0,0,
-        27,38,3,4,2,10,28,29,10,8,0,0,29,30,7,0,0,0,30,38,3,4,2,9,31,32,
-        10,7,0,0,32,33,7,1,0,0,33,38,3,4,2,8,34,35,10,6,0,0,35,36,7,2,0,
-        0,36,38,3,4,2,7,37,25,1,0,0,0,37,28,1,0,0,0,37,31,1,0,0,0,37,34,
-        1,0,0,0,38,41,1,0,0,0,39,37,1,0,0,0,39,40,1,0,0,0,40,5,1,0,0,0,41,
-        39,1,0,0,0,4,9,23,37,39
+        4,1,20,44,2,0,7,0,2,1,7,1,2,2,7,2,1,0,4,0,8,8,0,11,0,12,0,9,1,1,
+        1,1,1,1,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,25,8,2,1,2,1,
+        2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,5,2,39,8,2,10,2,12,2,42,
+        9,2,1,2,0,1,4,3,0,2,4,0,3,1,0,2,3,1,0,4,5,1,0,6,11,50,0,7,1,0,0,
+        0,2,11,1,0,0,0,4,24,1,0,0,0,6,8,3,2,1,0,7,6,1,0,0,0,8,9,1,0,0,0,
+        9,7,1,0,0,0,9,10,1,0,0,0,10,1,1,0,0,0,11,12,3,4,2,0,12,13,5,19,0,
+        0,13,3,1,0,0,0,14,15,6,2,-1,0,15,25,5,14,0,0,16,25,5,15,0,0,17,25,
+        5,16,0,0,18,25,5,17,0,0,19,25,5,18,0,0,20,21,5,12,0,0,21,22,3,4,
+        2,0,22,23,5,13,0,0,23,25,1,0,0,0,24,14,1,0,0,0,24,16,1,0,0,0,24,
+        17,1,0,0,0,24,18,1,0,0,0,24,19,1,0,0,0,24,20,1,0,0,0,25,40,1,0,0,
+        0,26,27,10,10,0,0,27,28,5,1,0,0,28,39,3,4,2,11,29,30,10,9,0,0,30,
+        31,7,0,0,0,31,39,3,4,2,10,32,33,10,8,0,0,33,34,7,1,0,0,34,39,3,4,
+        2,9,35,36,10,7,0,0,36,37,7,2,0,0,37,39,3,4,2,8,38,26,1,0,0,0,38,
+        29,1,0,0,0,38,32,1,0,0,0,38,35,1,0,0,0,39,42,1,0,0,0,40,38,1,0,0,
+        0,40,41,1,0,0,0,41,5,1,0,0,0,42,40,1,0,0,0,4,9,24,38,40
     ]
 
 class SimpleLangParser ( Parser ):
@@ -44,7 +44,7 @@ class SimpleLangParser ( Parser ):
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "<INVALID>", "<INVALID>", 
                       "<INVALID>", "<INVALID>", "INT", "FLOAT", "STRING", 
-                      "BOOL", "NEWLINE", "WS" ]
+                      "BOOL", "CHAR", "NEWLINE", "WS" ]
 
     RULE_prog = 0
     RULE_stat = 1
@@ -70,8 +70,9 @@ class SimpleLangParser ( Parser ):
     FLOAT=15
     STRING=16
     BOOL=17
-    NEWLINE=18
-    WS=19
+    CHAR=18
+    NEWLINE=19
+    WS=20
 
     def __init__(self, input:TokenStream, output:TextIO = sys.stdout):
         super().__init__(input, output)
@@ -126,7 +127,7 @@ class SimpleLangParser ( Parser ):
                 self.state = 9 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 249856) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & 512000) != 0)):
                     break
 
         except RecognitionException as re:
@@ -306,6 +307,24 @@ class SimpleLangParser ( Parser ):
                 listener.exitComparison(self)
 
 
+    class CharContext(ExprContext):
+
+        def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleLangParser.ExprContext
+            super().__init__(parser)
+            self.copyFrom(ctx)
+
+        def CHAR(self):
+            return self.getToken(SimpleLangParser.CHAR, 0)
+
+        def enterRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "enterChar" ):
+                listener.enterChar(self)
+
+        def exitRule(self, listener:ParseTreeListener):
+            if hasattr( listener, "exitChar" ):
+                listener.exitChar(self)
+
+
     class ParensContext(ExprContext):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a SimpleLangParser.ExprContext
@@ -394,7 +413,7 @@ class SimpleLangParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 23
+            self.state = 24
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [14]:
@@ -426,22 +445,29 @@ class SimpleLangParser ( Parser ):
                 self.state = 18
                 self.match(SimpleLangParser.BOOL)
                 pass
+            elif token in [18]:
+                localctx = SimpleLangParser.CharContext(self, localctx)
+                self._ctx = localctx
+                _prevctx = localctx
+                self.state = 19
+                self.match(SimpleLangParser.CHAR)
+                pass
             elif token in [12]:
                 localctx = SimpleLangParser.ParensContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 19
-                self.match(SimpleLangParser.T__11)
                 self.state = 20
-                self.expr(0)
+                self.match(SimpleLangParser.T__11)
                 self.state = 21
+                self.expr(0)
+                self.state = 22
                 self.match(SimpleLangParser.T__12)
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 39
+            self.state = 40
             self._errHandler.sync(self)
             _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
@@ -449,30 +475,30 @@ class SimpleLangParser ( Parser ):
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 37
+                    self.state = 38
                     self._errHandler.sync(self)
                     la_ = self._interp.adaptivePredict(self._input,2,self._ctx)
                     if la_ == 1:
                         localctx = SimpleLangParser.PowerContext(self, SimpleLangParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 25
-                        if not self.precpred(self._ctx, 9):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
                         self.state = 26
-                        self.match(SimpleLangParser.T__0)
+                        if not self.precpred(self._ctx, 10):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
                         self.state = 27
-                        self.expr(10)
+                        self.match(SimpleLangParser.T__0)
+                        self.state = 28
+                        self.expr(11)
                         pass
 
                     elif la_ == 2:
                         localctx = SimpleLangParser.MulDivContext(self, SimpleLangParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 28
-                        if not self.precpred(self._ctx, 8):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
                         self.state = 29
+                        if not self.precpred(self._ctx, 9):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
+                        self.state = 30
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==2 or _la==3):
@@ -480,18 +506,18 @@ class SimpleLangParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 30
-                        self.expr(9)
+                        self.state = 31
+                        self.expr(10)
                         pass
 
                     elif la_ == 3:
                         localctx = SimpleLangParser.AddSubContext(self, SimpleLangParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 31
-                        if not self.precpred(self._ctx, 7):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
                         self.state = 32
+                        if not self.precpred(self._ctx, 8):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
+                        self.state = 33
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==4 or _la==5):
@@ -499,18 +525,18 @@ class SimpleLangParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 33
-                        self.expr(8)
+                        self.state = 34
+                        self.expr(9)
                         pass
 
                     elif la_ == 4:
                         localctx = SimpleLangParser.ComparisonContext(self, SimpleLangParser.ExprContext(self, _parentctx, _parentState))
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expr)
-                        self.state = 34
-                        if not self.precpred(self._ctx, 6):
-                            from antlr4.error.Errors import FailedPredicateException
-                            raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
                         self.state = 35
+                        if not self.precpred(self._ctx, 7):
+                            from antlr4.error.Errors import FailedPredicateException
+                            raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
+                        self.state = 36
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 4032) != 0)):
@@ -518,12 +544,12 @@ class SimpleLangParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 36
-                        self.expr(7)
+                        self.state = 37
+                        self.expr(8)
                         pass
 
              
-                self.state = 41
+                self.state = 42
                 self._errHandler.sync(self)
                 _alt = self._interp.adaptivePredict(self._input,3,self._ctx)
 
@@ -549,19 +575,19 @@ class SimpleLangParser ( Parser ):
 
     def expr_sempred(self, localctx:ExprContext, predIndex:int):
             if predIndex == 0:
-                return self.precpred(self._ctx, 9)
+                return self.precpred(self._ctx, 10)
          
 
             if predIndex == 1:
-                return self.precpred(self._ctx, 8)
+                return self.precpred(self._ctx, 9)
          
 
             if predIndex == 2:
-                return self.precpred(self._ctx, 7)
+                return self.precpred(self._ctx, 8)
          
 
             if predIndex == 3:
-                return self.precpred(self._ctx, 6)
+                return self.precpred(self._ctx, 7)
          
 
 

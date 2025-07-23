@@ -44,6 +44,11 @@ class SimpleLangVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SimpleLangParser#Char.
+    def visitChar(self, ctx:SimpleLangParser.CharContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SimpleLangParser#Parens.
     def visitParens(self, ctx:SimpleLangParser.ParensContext):
         return self.visitChildren(ctx)

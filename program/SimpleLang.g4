@@ -12,6 +12,7 @@ expr: expr '**' expr                               # Power
     | FLOAT                                        # Float
     | STRING                                       # String
     | BOOL                                         # Bool
+    | CHAR                                         # Char
     | '(' expr ')'                                 # Parens
     ;
 
@@ -19,5 +20,6 @@ INT: [0-9]+ ;
 FLOAT: [0-9]+'.'[0-9]* ;
 STRING: '"' .*? '"' ;
 BOOL: 'true' | 'false' ;
+CHAR: '\'' . '\'' ;
 NEWLINE: '\r'? '\n' ;
 WS: [ \t]+ -> skip ;

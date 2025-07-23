@@ -1,6 +1,6 @@
 from SimpleLangListener import SimpleLangListener
 from SimpleLangParser import SimpleLangParser
-from custom_types import IntType, FloatType, StringType, BoolType
+from custom_types import IntType, FloatType, StringType, BoolType, CharType
 
 class TypeCheckListener(SimpleLangListener):
 
@@ -24,9 +24,15 @@ class TypeCheckListener(SimpleLangListener):
   def exitAddSub(self, ctx: SimpleLangParser.AddSubContext):
     left_type = self.types[ctx.expr(0)]
     right_type = self.types[ctx.expr(1)]
-    if not self.is_valid_arithmetic_operation(left_type, right_type):
-      self.errors.append(f"Unsupported operand types for + or -: {left_type} and {right_type}")
-    self.types[ctx] = FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
+    if isinstance(left_type, (StringType, CharType)) and isinstance(right_type, (StringType, CharType)):
+        self.types[ctx] = StringType()
+        return
+
+    if isinstance(left_type, (IntType, FloatType)) and isinstance(right_type, (IntType, FloatType)):
+        self.types[ctx] = FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
+        return
+    
+    self.errors.append(f"Unsupported operand types for + or -: {left_type} and {right_type}")
 
   def enterInt(self, ctx: SimpleLangParser.IntContext):
     self.types[ctx] = IntType()
@@ -70,4 +76,7 @@ class TypeCheckListener(SimpleLangListener):
     else:
       self.errors.append(f"Unsupported operand types for comparison: {left_type} and {right_type}")
       self.types[ctx] = BoolType() # Default to BoolType to avoid further errors
+
+  def enterChar(self, ctx: SimpleLangParser.CharContext):
+    self.types[ctx] = CharType()
     

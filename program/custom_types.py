@@ -16,3 +16,7 @@ class StringType(Type):
 class BoolType(Type):
   def __str__(self):
     return "bool"
+  
+class CharType(Type):
+  def __str__(self):
+    return "char"
