@@ -62,6 +62,15 @@ class SimpleLangListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by SimpleLangParser#Comparison.
+    def enterComparison(self, ctx:SimpleLangParser.ComparisonContext):
+        pass
+
+    # Exit a parse tree produced by SimpleLangParser#Comparison.
+    def exitComparison(self, ctx:SimpleLangParser.ComparisonContext):
+        pass
+
+
     # Enter a parse tree produced by SimpleLangParser#Parens.
     def enterParens(self, ctx:SimpleLangParser.ParensContext):
         pass
@@ -86,6 +95,15 @@ class SimpleLangListener(ParseTreeListener):
 
     # Exit a parse tree produced by SimpleLangParser#Int.
     def exitInt(self, ctx:SimpleLangParser.IntContext):
+        pass
+
+
+    # Enter a parse tree produced by SimpleLangParser#Power.
+    def enterPower(self, ctx:SimpleLangParser.PowerContext):
+        pass
+
+    # Exit a parse tree produced by SimpleLangParser#Power.
+    def exitPower(self, ctx:SimpleLangParser.PowerContext):
         pass
 
 

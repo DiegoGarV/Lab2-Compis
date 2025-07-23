@@ -39,6 +39,11 @@ class SimpleLangVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by SimpleLangParser#Comparison.
+    def visitComparison(self, ctx:SimpleLangParser.ComparisonContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by SimpleLangParser#Parens.
     def visitParens(self, ctx:SimpleLangParser.ParensContext):
         return self.visitChildren(ctx)
@@ -51,6 +56,11 @@ class SimpleLangVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by SimpleLangParser#Int.
     def visitInt(self, ctx:SimpleLangParser.IntContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by SimpleLangParser#Power.
+    def visitPower(self, ctx:SimpleLangParser.PowerContext):
         return self.visitChildren(ctx)
 
 

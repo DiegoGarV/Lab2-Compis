@@ -50,3 +50,24 @@ class TypeCheckListener(SimpleLangListener):
     if isinstance(left_type, (IntType, FloatType)) and isinstance(right_type, (IntType, FloatType)):
       return True
     return False
+  
+  def exitPower(self, ctx: SimpleLangParser.PowerContext):
+    left_type = self.types[ctx.expr(0)]
+    right_type = self.types[ctx.expr(1)]
+    if isinstance(left_type, (IntType, FloatType)) and isinstance(right_type, (IntType, FloatType)):
+      self.types[ctx] = FloatType() if isinstance(left_type, FloatType) or isinstance(right_type, FloatType) else IntType()
+    else:
+      self.errors.append(f"Unsupported operand types for **: {left_type} and {right_type}")
+
+  def exitComparison(self, ctx: SimpleLangParser.ComparisonContext):
+    left_type = self.types[ctx.expr(0)]
+    right_type = self.types[ctx.expr(1)]
+    
+    if type(left_type) == type(right_type):
+      self.types[ctx] = BoolType()
+    elif isinstance(left_type, (IntType, FloatType)) and isinstance(right_type, (IntType, FloatType)):
+      self.types[ctx] = BoolType()
+    else:
+      self.errors.append(f"Unsupported operand types for comparison: {left_type} and {right_type}")
+      self.types[ctx] = BoolType() # Default to BoolType to avoid further errors
+    
